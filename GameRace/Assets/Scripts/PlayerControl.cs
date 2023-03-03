@@ -7,7 +7,9 @@ public class PlayerControl : MonoBehaviour
     public int _CouterSprites = 0;
     public int _CountAngle = 0;
 
-    public float _MovementSpeed;
+    public float _MovementSpeed = 0;
+
+    public bool _HasSpeedUp = true;
 
     public GameObject PlayerMask;
     public GameObject dot;
@@ -21,14 +23,30 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         PlayerMove();
-        //PlayerSpriteController();
     }
-    void PlayerMove()
+	private void Update()
+	{
+        if (Input.GetKey(KeyCode.W))
+        {
+            _HasSpeedUp = true;
+            if (_MovementSpeed < 2f && _HasSpeedUp)
+            {
+                _HasSpeedUp = false;
+                StartCoroutine(SpeedPlus());
+            }
+
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            _MovementSpeed = 0;
+        }
+    }
+	void PlayerMove()
 	{
         Vector3 vb = new Vector3(dot.transform.position.x - transform.position.x, dot.transform.position.y - transform.position.y, dot.transform.position.z - transform.position.z);
 		if (Input.GetKey(KeyCode.W))
 		{
-            transform.position = transform.position + _MovementSpeed * vb * Time.fixedDeltaTime;
+            transform.position = transform.position + _MovementSpeed * vb.normalized * Time.fixedDeltaTime;
         }
 		if (Input.GetKey(KeyCode.A))
 		{
@@ -38,53 +56,16 @@ public class PlayerControl : MonoBehaviour
         {
             transform.Rotate(0, 0, -5f);
         }
-
-    }
-    void PlayerSpriteController()
-	{
-		if (Input.GetKey(KeyCode.D) &&  _CountAngle == 1)
+		if (Input.GetKey(KeyCode.S))
 		{
-            PlayerMask.transform.Rotate(0,0,90f);
-            _CountAngle = 0;
+            transform.position = transform.position + 2f * -vb.normalized * Time.fixedDeltaTime;
         }
-        if (Input.GetKey(KeyCode.W) && _CountAngle == 0 )
-        {
-            PlayerMask.transform.Rotate(0, 0, 90f);
-            _CountAngle = 3;
-        }
-        if (Input.GetKey(KeyCode.A) && _CountAngle== 3)
-        {
-            PlayerMask.transform.Rotate(0, 0,90f);
-            _CountAngle = 2;
-        }
-        if (Input.GetKey(KeyCode.S) &&  _CountAngle == 2)
-        {
-            PlayerMask.transform.Rotate(0, 0, 90f);
-            _CountAngle = 1;
-        }
-
-
-
-        if (Input.GetKey(KeyCode.D) && _CountAngle == 3)
-        {
-            PlayerMask.transform.Rotate(0, 0, -90f);
-            _CountAngle = 0;
-        }
-        if (Input.GetKey(KeyCode.W) && _CountAngle == 2)
-        {
-            PlayerMask.transform.Rotate(0, 0, -90f);
-            _CountAngle = 3;
-        }
-        if (Input.GetKey(KeyCode.A) && _CountAngle == 1)
-        {
-            PlayerMask.transform.Rotate(0, 0, -90f);
-            _CountAngle = 2;
-        }
-        if (Input.GetKey(KeyCode.S) && _CountAngle == 0)
-        {
-            PlayerMask.transform.Rotate(0, 0, -90f);
-            _CountAngle = 1;
-        }
+		
 
     }
+    IEnumerator SpeedPlus()
+	{
+        yield return new WaitForSeconds(0.8f);
+        _MovementSpeed += 0.01f;
+	}
 }
