@@ -5,20 +5,24 @@ using UnityEngine;
 public class PlayerCollector : MonoBehaviour
 {
 	public GameObject pl;
-	private void Start()
-	{
 
-	}
-	void Update()
-    {
-        
-    }
+	public bool _Lose = false;
+
+	public Sprite sprite;
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.gameObject.name == "Ring")
+		if(collision.gameObject.tag == "Ring")
 		{
-			Destroy(collision.gameObject);
+			collision.gameObject.SetActive(false);
+			
 			pl.GetComponent<PlayerControl>()._CountForFinish += 1;
 		}
+		if(collision.gameObject.tag == "Wall")
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+			_Lose = true;
+		}
+
 	}
 }

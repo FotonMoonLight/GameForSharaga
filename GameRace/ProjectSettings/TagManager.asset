@@ -8,6 +8,8 @@ TagManager:
   - BotRight
   - BotLeft
   - Ring
+  - TrigFin
+  - Wall
   layers:
   - Default
   - TransparentFX
