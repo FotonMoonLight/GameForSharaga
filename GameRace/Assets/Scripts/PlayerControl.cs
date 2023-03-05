@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     public int _CouterSprites = 0;
     public int _CountAngle = 0;
+    public int _CountForFinish;
 
     public float _MovementSpeed = 0.4f;
     private float move;
