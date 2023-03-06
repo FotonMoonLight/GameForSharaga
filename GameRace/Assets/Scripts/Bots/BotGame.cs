@@ -59,14 +59,14 @@ public class BotGame : MonoBehaviour
 	}
 	IEnumerator turnTimerRight()
 	{
-		yield return new WaitForSeconds(0.001f);
+		yield return new WaitForFixedUpdate();
 		transform.Rotate(0, 0, -3f);
 		_AngleCount += 3;
 		_HasTurn = true;
 	}
 	IEnumerator turnTimerLeft()
 	{
-		yield return new WaitForSeconds(0.001f);
+		yield return new WaitForFixedUpdate();
 		transform.Rotate(0, 0, 3f);
 		_AngleCount += 3;
 		_HasTurn = true;
