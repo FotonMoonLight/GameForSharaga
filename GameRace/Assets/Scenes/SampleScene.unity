@@ -4444,6 +4444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1697693938819817865, guid: 9d6f3362fe9f3ca4bb32630680e9dfc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1697693938819817869, guid: 9d6f3362fe9f3ca4bb32630680e9dfc2, type: 3}
       propertyPath: m_Name
       value: Bot Peter

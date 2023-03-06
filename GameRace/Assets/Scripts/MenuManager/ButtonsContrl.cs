@@ -21,4 +21,8 @@ public class ButtonsContrl : MonoBehaviour
 	{
         SceneManager.LoadScene("SampleScene");
 	}
+    public void ExitNenu()
+	{
+        Application.Quit();
+	}
 }
