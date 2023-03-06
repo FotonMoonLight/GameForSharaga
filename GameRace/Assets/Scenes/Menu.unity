@@ -1077,6 +1077,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5978804, y: 2.2554798}
   m_EdgeRadius: 0
+--- !u!1 &734882275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1697693938819817869, guid: 9d6f3362fe9f3ca4bb32630680e9dfc2, type: 3}
+  m_PrefabInstance: {fileID: 1679031078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &736983588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,9 +1305,9 @@ GameObject:
   - component: {fileID: 1053315795}
   - component: {fileID: 1053315794}
   - component: {fileID: 1053315793}
-  - component: {fileID: 1053315796}
   - component: {fileID: 1053315798}
   - component: {fileID: 1053315797}
+  - component: {fileID: 1053315799}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1376,23 +1381,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1053315796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053315792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a16f4a8834134cc4d9f4e1225af651a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points:
-  - {fileID: 2134505509}
-  - {fileID: 1978201695}
-  - {fileID: 637979672}
-  CamSpeed: 4
 --- !u!50 &1053315797
 Rigidbody2D:
   serializedVersion: 4
@@ -1401,7 +1389,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053315792}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1440,6 +1428,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1053315799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053315792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569b0967bf8411248a67f88a6f658180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 734882275}
 --- !u!1 &1136757315
 GameObject:
   m_ObjectHideFlags: 0

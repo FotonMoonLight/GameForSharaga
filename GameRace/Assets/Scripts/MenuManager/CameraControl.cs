@@ -5,9 +5,9 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
 	public GameObject[] points;
-	private int _Counter = 0;
+	public int _Counter = 0;
 	public float CamSpeed = 5f;
-	private void FixedUpdate()
+	 void FixedUpdate()
 	{
 		if(_Counter == 0)
 		{
