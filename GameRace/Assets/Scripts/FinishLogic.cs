@@ -10,6 +10,8 @@ public class FinishLogic : MonoBehaviour
     public GameObject[] rings;
 
     private int _WinCont = 0;
+    private bool _Fin = false;
+    public bool PlayerWin = false;
 
     private int _CounterMon;
     void Start()
@@ -21,13 +23,21 @@ public class FinishLogic : MonoBehaviour
     void Update()
     {
         _CounterMon = pl.GetComponent<PlayerControl>()._CountForFinish;
+        if(_WinCont == 3)
+		{
+            PlayerWin = true;
+		}
     }
 	
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
         if (collision.gameObject.tag == "Player")
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteFinish;
+			if(_Fin == false)
+			{
+                StartCoroutine(fop());
+                _Fin = true;
+			}
             if (_CounterMon == 11)
             {
                 _WinCont += 1;
@@ -38,5 +48,11 @@ public class FinishLogic : MonoBehaviour
 				}
             }
         }
+    }
+
+    IEnumerator fop()
+	{
+        yield return new WaitForSeconds(3f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = spriteFinish;
     }
 }

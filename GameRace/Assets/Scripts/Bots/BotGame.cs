@@ -6,14 +6,21 @@ public class BotGame : MonoBehaviour
 {
     public float speedBot;
 	public GameObject _Point;
+	public GameObject Player;
+	public GameObject GameManager;
 	public int _TurnCounter = 0;
 	public int _AngleCount = 0;
 	private bool _HasTurn = true;
+	public bool _InMenu = false;
     void FixedUpdate()
     {
-		Vector3 vb = new Vector3(_Point.transform.position.x - transform.position.x, _Point.transform.position.y - transform.position.y, _Point.transform.position.z - transform.position.z);
-		transform.position = transform.position + speedBot * vb.normalized * Time.fixedDeltaTime;
-		TurnController();
+		if(Player.GetComponent<PlayerCollector>()._Lose != true && (GameManager.GetComponent<GameManager>().Aweker != true || _InMenu))
+		{
+			Vector3 vb = new Vector3(_Point.transform.position.x - transform.position.x, _Point.transform.position.y - transform.position.y, _Point.transform.position.z - transform.position.z);
+			transform.position = transform.position + speedBot * vb.normalized * Time.fixedDeltaTime;
+			TurnController();
+		}
+		
     }
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

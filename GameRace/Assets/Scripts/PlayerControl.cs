@@ -14,6 +14,7 @@ public class PlayerControl : MonoBehaviour
     public bool _HasSpeedUp = true;
 
     public GameObject PlayerMask;
+    public GameObject GameManager;
     public GameObject dot;
 
  
@@ -25,26 +26,30 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        PlayerMove();
+		if (GameManager.GetComponent<GameManager>().Aweker == false)
+		{
+            PlayerMove();
+        }
+        
     }
 	
 	void PlayerMove()
 	{
         move = Input.GetAxis("Vertical");
         Vector3 vb = new Vector3(dot.transform.position.x - transform.position.x, dot.transform.position.y - transform.position.y, dot.transform.position.z - transform.position.z);
-		if (Input.GetKey(KeyCode.W))
+		if (Input.GetKey(KeyCode.W) && PlayerMask.GetComponent<PlayerCollector>()._Lose != true)
 		{
             transform.position = transform.position + _MovementSpeed * vb.normalized * move * Time.fixedDeltaTime;
         }
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKey(KeyCode.A) && PlayerMask.GetComponent<PlayerCollector>()._Lose != true)
 		{
             transform.Rotate(0, 0, 3f);
 		}
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && PlayerMask.GetComponent<PlayerCollector>()._Lose != true)
         {
             transform.Rotate(0, 0, -3f);
         }
-		if (Input.GetKey(KeyCode.S))
+		if (Input.GetKey(KeyCode.S) && PlayerMask.GetComponent<PlayerCollector>()._Lose != true)
 		{
             transform.position = transform.position + 3f * move * vb.normalized * Time.fixedDeltaTime;
         }

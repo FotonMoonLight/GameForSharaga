@@ -7,7 +7,7 @@ public class CameraControl : MonoBehaviour
 	public GameObject[] points;
 	public int _Counter = 0;
 	public float CamSpeed = 5f;
-	 void FixedUpdate()
+	void FixedUpdate()
 	{
 		if(_Counter == 0)
 		{
@@ -15,15 +15,11 @@ public class CameraControl : MonoBehaviour
 			transform.position = transform.position + CamSpeed * vb.normalized * Time.fixedDeltaTime;
 		}
 		
-
-
 		if (_Counter == 1)
 		{
 			Vector3 vb = new Vector3(points[2].transform.position.x - transform.position.x, points[2].transform.position.y - transform.position.y, points[2].transform.position.z - transform.position.z);
 			transform.position = transform.position + CamSpeed * vb.normalized * Time.fixedDeltaTime;
 		}
-		
-
 
 		if (_Counter == 2)
 		{
