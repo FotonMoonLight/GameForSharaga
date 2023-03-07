@@ -14,7 +14,7 @@ public class BotGame : MonoBehaviour
 	public bool _InMenu = false;
     void FixedUpdate()
     {
-		if(Player.GetComponent<PlayerCollector>()._Lose != true && (GameManager.GetComponent<GameManager>().Aweker != true || _InMenu))
+		if(AdminPanelLogic._IsBotLogicOn == false &&Player.GetComponent<PlayerCollector>()._Lose != true && (GameManager.GetComponent<GameManager>().Aweker != true || _InMenu))
 		{
 			Vector3 vb = new Vector3(_Point.transform.position.x - transform.position.x, _Point.transform.position.y - transform.position.y, _Point.transform.position.z - transform.position.z);
 			transform.position = transform.position + speedBot * vb.normalized * Time.fixedDeltaTime;

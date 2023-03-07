@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private int _SpriteCounter = 0;
     public GameObject pl;
     public GameObject _Conter;
+    public GameObject[] _AdminMenu;
     public Sprite[] Numers;
 
     public GameObject[] menuButt;
@@ -25,6 +26,12 @@ public class GameManager : MonoBehaviour
             menuButt[2].SetActive(true);
         }
     }
+    public void AdmunButton()
+	{
+        _AdminMenu[0].SetActive(false);
+        _AdminMenu[1].SetActive(true);
+        Time.timeScale = 0f;
+	}
     public void OnMenuButton()
 	{
         Time.timeScale = 0f;
