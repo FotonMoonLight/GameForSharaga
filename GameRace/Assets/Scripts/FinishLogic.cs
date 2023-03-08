@@ -11,7 +11,7 @@ public class FinishLogic : MonoBehaviour
 
     private int _WinCont = 0;
     private bool _Fin = false;
-    public bool PlayerWin = false;
+    public static bool PlayerWin = false;
 
     private int _CounterMon;
     void Start()
@@ -23,7 +23,7 @@ public class FinishLogic : MonoBehaviour
     void Update()
     {
         _CounterMon = pl.GetComponent<PlayerControl>()._CountForFinish;
-        if(_WinCont == 3)
+        if(_WinCont == 1)
 		{
             PlayerWin = true;
 		}
@@ -31,7 +31,7 @@ public class FinishLogic : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && AdminPanelLogic._IsFinLog == false)
         {
 			if(_Fin == false)
 			{

@@ -26,7 +26,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-		if (GameManager.GetComponent<GameManager>().Aweker == false)
+        if (GameManager.GetComponent<GameManager>().Aweker == false && AdminPanelLogic._IsPlConLogic == false)
 		{
             PlayerMove();
         }

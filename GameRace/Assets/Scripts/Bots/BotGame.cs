@@ -10,6 +10,7 @@ public class BotGame : MonoBehaviour
 	public GameObject GameManager;
 	public int _TurnCounter = 0;
 	public int _AngleCount = 0;
+	private int _WinBot = 0;
 	private bool _HasTurn = true;
 	public bool _InMenu = false;
     void FixedUpdate()
@@ -19,6 +20,10 @@ public class BotGame : MonoBehaviour
 			Vector3 vb = new Vector3(_Point.transform.position.x - transform.position.x, _Point.transform.position.y - transform.position.y, _Point.transform.position.z - transform.position.z);
 			transform.position = transform.position + speedBot * vb.normalized * Time.fixedDeltaTime;
 			TurnController();
+		}
+		if(_WinBot == 2)
+		{
+			Player.GetComponent<PlayerCollector>()._Lose = true;
 		}
 		
     }
@@ -31,6 +36,10 @@ public class BotGame : MonoBehaviour
 		if (collision.gameObject.tag == "BotLeft")
 		{
 			_TurnCounter = 2;
+		}
+		if(collision.gameObject.name == "Start")
+		{
+			_WinBot += 1;
 		}
 	}
 	private void TurnController()

@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
     public bool Aweker = true;
     private bool Cor = true;
     private bool Destroyer = false;
+    private bool Helpes = false;
     private int _SpriteCounter = 0;
     public GameObject pl;
+    public GameObject Helps;
     public GameObject _Conter;
     public GameObject[] _AdminMenu;
     public Sprite[] Numers;
@@ -24,6 +26,16 @@ public class GameManager : MonoBehaviour
             menuButt[0].SetActive(false);
             menuButt[1].SetActive(true);
             menuButt[2].SetActive(true);
+            menuButt[4].SetActive(true);
+            Time.timeScale = 0f;
+        }
+        if(FinishLogic.PlayerWin == true)
+		{
+            menuButt[0].SetActive(false);
+            menuButt[1].SetActive(true);
+            menuButt[2].SetActive(true);
+            menuButt[5].SetActive(true);
+            Time.timeScale = 0f;
         }
     }
     public void AdmunButton()
@@ -47,6 +59,7 @@ public class GameManager : MonoBehaviour
     public void OnMinButton()
     {
         SceneManager.LoadScene("Menu");
+        Time.timeScale = 1f;
     }
     public void OnContButton()
 	{
@@ -74,6 +87,19 @@ public class GameManager : MonoBehaviour
 		}
         
 	}
+    public void Helpers()
+	{
+        if (Helpes == true)
+        {
+            Helps.SetActive(false);
+            Helpes = false;
+        }
+        else if (Helpes == false)
+        {
+            Helps.SetActive(true);
+            Helpes = true;
+        }
+    }
     IEnumerator Timer()
 	{
         yield return new WaitForSeconds(1f);
