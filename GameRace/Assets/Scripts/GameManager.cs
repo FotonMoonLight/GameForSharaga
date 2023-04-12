@@ -55,7 +55,15 @@ public class GameManager : MonoBehaviour
     public void OnRestButton()
 	{
         SceneManager.LoadScene("SampleScene");
-	}
+        FinishLogic.PlayerWin = false;
+        pl.GetComponent<PlayerCollector>()._Lose = false;
+            menuButt[0].SetActive(true);
+            menuButt[1].SetActive(false);
+            menuButt[2].SetActive(false);
+            menuButt[5].SetActive(false);
+            Time.timeScale = 1f;
+        
+    }
     public void OnMinButton()
     {
         SceneManager.LoadScene("Menu");

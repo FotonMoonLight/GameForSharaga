@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
  
     void Start()
     {
-      
+        Time.timeScale = 1f;
     }
 
 
